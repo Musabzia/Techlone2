@@ -39,11 +39,13 @@ const VerticalBanner = () => {
     };
 
     const handleWheel = (event) => {
-      event.preventDefault();
-      if (event.deltaY > 0) {
-        scrollDown();
-      } else {
-        scrollUp();
+      if (event.type === 'wheel') {
+        event.preventDefault(); // Prevent default for wheel events only
+        if (event.deltaY > 0) {
+          scrollDown();
+        } else {
+          scrollUp();
+        }
       }
     };
 
@@ -80,7 +82,7 @@ const VerticalBanner = () => {
               height: '100vh',
             }}
           >
-            <div className="banner-content bg-opacity-50 p-6 text-center rounded-md md:text-left">
+            <div className="banner-content bg-opacity-50 p-6 text-center rounded-md md:text-center">
               {banner.id === 1 ? (
                 <WelcomePage />
               ) : (
